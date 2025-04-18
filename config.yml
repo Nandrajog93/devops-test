@@ -1,0 +1,27 @@
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+
+nodes:
+- role: control-plane
+  image: kindest/node:v1.31.2
+- role: worker
+  image: kindest/node:v1.31.2
+- role: worker
+  image: kindest/node:v1.31.2
+  extraPortMappings:
+  - containerPort: 80 ## container port
+    hostPort: 80 ## ouside world port
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443 ## ouside world port
+    protocol: TCP
+
+
+# You (kubectl)
+#      ↓
+# API Server (Control Plane)
+#      ↓
+# Scheduler ----> Pick a Worker Node
+#      ↓
+# kubelet on that Worker → Runs Pod

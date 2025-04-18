@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-development
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      name: frontend-pod
+      namespace: development
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: nandrajog93/frontend:latest
+          ports:
+            - containerPort: 80
