@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: nandrajog93/frontend:latest
+          image: nandrajog93/frontend:hua
           ports:
             - containerPort: 80
